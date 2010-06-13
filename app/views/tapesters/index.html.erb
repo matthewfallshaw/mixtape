@@ -1,0 +1,13 @@
+<h1>Listing tapesters</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% @tapesters.each do |tapester| %>
+  <tr>
+    <td><%= link_to tapester.name, tapester %></td>
+  </tr>
+<% end %>
+</table>

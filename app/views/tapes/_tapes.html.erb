@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+<% tapes.each do |tape| %>
+  <tr>
+    <td><%= link_to tape.name, tape %></td>
+    <td><%= tape.description %></td>
+  </tr>
+<% end %>
+</table>
