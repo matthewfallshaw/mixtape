@@ -1,4 +1,4 @@
 class Track < ActiveRecord::Base
-  has_one :tapester
-  has_one :tape
+  belongs_to :tapester
+  belongs_to :tape
 end
