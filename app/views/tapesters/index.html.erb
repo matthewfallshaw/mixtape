@@ -3,11 +3,13 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Level of commitment</th>
   </tr>
 
 <% @tapesters.each do |tapester| %>
   <tr>
     <td><%= link_to tapester.name, tapester %></td>
+    <td<%= tapester.tapes.count == 0 ? " class='embarrassing'".html_safe : "" %>><%= tapester.tapes.count == 0 ? "no".html_safe : tapester.tapes.count %> track<%= tapester.tapes.count == 1 ? "" : "s" %> recorded</td>
   </tr>
 <% end %>
 </table>

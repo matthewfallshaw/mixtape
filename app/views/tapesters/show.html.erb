@@ -5,9 +5,10 @@
   <%= @tapester.name %>
 </p>
 
+<ul>
 <% @tapes.each do |tape| -%>
-
+  <li><%= tape.name %>:<br /><%= tape.track_for(@tapester) ? "Recorded" : "<span class='embarrassing'>- nothing -</span>".html_safe %></li>
 <% end -%>
-
+</ul>
 
 <%= link_to 'Back', tapesters_path %>

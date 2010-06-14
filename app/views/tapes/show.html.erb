@@ -10,5 +10,10 @@
   <%= @tape.description %>
 </p>
 
+<p>
+  <b>Commitment:</b>
+  <%= @tape.tapesters.count == 0 ? "<span class='embarrassing'>- none -</span>".html_safe : @tape.tapesters.collect {|tapester| tapester.name }.to_sentence %>
+</p>
+
 
 <%= link_to 'Back', tapes_path %>

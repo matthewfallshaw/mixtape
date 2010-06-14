@@ -1,6 +1,6 @@
 class Tape < ActiveRecord::Base
   has_many :tracks
-  has_many :tapesters
+  has_many :tapesters, :through => :tracks
 
   validates :name, :uniqueness => true
 

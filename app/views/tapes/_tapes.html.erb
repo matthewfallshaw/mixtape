@@ -2,12 +2,14 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
+    <th>Commitment</th>
   </tr>
 
 <% tapes.each do |tape| %>
   <tr>
     <td><%= link_to tape.name, tape %></td>
     <td><%= tape.description %></td>
+    <td><%= tape.tracks.count == 0 ? "no" : tape.tracks.count %> track<%= tape.tracks.count == 1 ? "" : "s" %> recorded</td>
   </tr>
 <% end %>
 </table>
