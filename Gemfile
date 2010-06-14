@@ -28,7 +28,12 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 #   gem 'webrat'
 # end
 
-gem "rspec-rails", ">= 2.0.0.beta.8"
 group :development do
   gem 'mysql'
+end
+
+group :test do
+  gem "rspec-rails", ">= 2.0.0.beta.8"
+  gem 'factory_girl'
+  gem 'awesome_print', :require => 'ap'
 end
