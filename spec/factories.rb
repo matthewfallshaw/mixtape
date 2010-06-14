@@ -1,6 +1,7 @@
 
 Factory.define :tapester do |tapester|
   tapester.sequence(:name) {|n| "tapester_#{n}" }
+  tapester.sequence(:email) {|n| "email_#{n}@example.com" }
 end
 
 Factory.define :tape do |tape|
