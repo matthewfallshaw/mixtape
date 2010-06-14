@@ -29,3 +29,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # end
 
 gem "rspec-rails", ">= 2.0.0.beta.8"
+group :development do
+  gem 'mysql'
+end
