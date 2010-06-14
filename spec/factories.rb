@@ -17,15 +17,15 @@ Factory.define :tape do |tape|
     when 5
       "The revolution will not be televised"
     else
-      (1..8).map{ ('a'..'z').to_a[rand(26)] }.join
+      String.random(8)
     end
   end
-  tape.description { (1..16).map{ ('a'..'z').to_a[rand(26)] }.join << "." }
+  tape.description { String.random(16) << "." }
 end
 
 Factory.define :track do |track|
-  track.name { (1..8).map{ ('a'..'z').to_a[rand(26)] }.join }
-  track.url { "http://www.youtube.com/watch?v=#{ (1..8).map{ ('a'..'z').to_a[rand(26)] }.join }" }
+  track.name { String.random(8) }
+  track.url { "http://www.youtube.com/watch?v=#{ String.random(8) }" }
   track.association :tapester
   track.association :tape
 end
