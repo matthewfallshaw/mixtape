@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100613052145) do
+ActiveRecord::Schema.define(:version => 20100614104339) do
 
   create_table "tapes", :force => true do |t|
     t.string   "name"
@@ -22,11 +22,14 @@ ActiveRecord::Schema.define(:version => 20100613052145) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "hashed_password"
+    t.string   "password_salt"
+    t.string   "email"
   end
 
   create_table "tracks", :force => true do |t|
-    t.integer  "tapester_id"
-    t.integer  "tape_id"
+    t.integer  "tapester_id", :null => false
+    t.integer  "tape_id",     :null => false
     t.string   "name"
     t.string   "url"
     t.datetime "created_at"

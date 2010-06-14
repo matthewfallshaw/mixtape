@@ -1,4 +1,9 @@
+require 'digest/sha1'
+
 class Tapester < ActiveRecord::Base
+
+  attr_protected :id, :password_salt
+
   has_many :tracks
   has_many :tapes, :through => :tracks, :uniq => true
 
@@ -13,4 +18,29 @@ class Tapester < ActiveRecord::Base
   # ... where tapester.tapes returns Tape.all
 
   validates :name, :uniqueness => true
+  validates :password, :confirmation => true
+
+  attr_accessor :password, :password_confirmation
+
+  class << self
+
+    def authenticate(email, pass)
+      u = where(:email => email).first
+      return nil if u.nil?
+      return u if encrypt(pass, u.password_salt) == u.hashed_password
+      nil
+    end
+
+    def encrypt(pass, salt)
+      Digest::SHA1.hexdigest(pass + salt)
+    end
+
+  end
+
+  def password=(pass)
+    @password = pass
+    self.password_salt = String.random(20) unless self.password_salt?
+    self.hashed_password = self.class.encrypt(@password, self.password_salt)
+  end
+
 end

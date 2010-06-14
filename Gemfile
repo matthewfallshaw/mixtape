@@ -22,6 +22,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
+gem 'authlogic'
+
 # Bundle gems for certain environments:
 # gem 'rspec', :group => :test
 # group :test do
@@ -30,6 +32,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 group :development do
   gem 'mysql'
+  gem 'ruby-debug'
+  gem 'awesome_print', :require => 'ap'
 end
 
 group :test do
