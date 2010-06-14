@@ -2,6 +2,12 @@ require 'digest/sha1'
 
 class Tapester < ActiveRecord::Base
 
+  acts_as_authentic do |c|
+    c.validate_email_field = false
+    c.validate_password_field = false
+    c.require_password_confirmation = false
+  end
+
   attr_protected :id, :password_salt
 
   has_many :tracks

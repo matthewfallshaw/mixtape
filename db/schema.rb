@@ -23,8 +23,14 @@ ActiveRecord::Schema.define(:version => 20100614104339) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "hashed_password"
+    t.string   "crypted_password"
     t.string   "password_salt"
+    t.string   "persistence_token"
     t.string   "email"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
   end
 
   create_table "tracks", :force => true do |t|
