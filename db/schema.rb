@@ -22,16 +22,19 @@ ActiveRecord::Schema.define(:version => 20100614104339) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "hashed_password"
-    t.string   "crypted_password"
-    t.string   "password_salt"
-    t.string   "persistence_token"
-    t.string   "email"
-    t.datetime "current_login_at"
-    t.datetime "last_login_at"
-    t.string   "current_login_ip"
-    t.string   "last_login_ip"
+    t.string   "email",                              :default => "", :null => false
+    t.string   "encrypted_password",  :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                      :default => "", :null => false
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                      :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "tapesters", ["email"], :name => "index_tapesters_on_email", :unique => true
 
   create_table "tracks", :force => true do |t|
     t.integer  "tapester_id", :null => false

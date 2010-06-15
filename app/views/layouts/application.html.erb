@@ -25,6 +25,8 @@
       </ul>
 	</div>
 	<div class="body span-16">
+      <% if notice %><p class="notice"><%= notice %></p><% end %>
+      <% if alert %><p class="alert"><%= alert %></p><% end %>
 <%= yield %>
 	</div>
   </div>
