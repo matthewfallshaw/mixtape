@@ -1,33 +1,22 @@
-<%= form_for(@track) do |f| %>
-  <% if @track.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@track.errors.count, "error") %> prohibited this track from being saved:</h2>
+<% if track.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(track.errors.count, "error") %> prohibited this track from being saved:</h2>
 
-      <ul>
-      <% @track.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :tapester_id %><br />
-    <%= f.text_field :tapester_id %>
-  </div>
-  <div class="field">
-    <%= f.label :tape_id %><br />
-    <%= f.text_field :tape_id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <ul>
+    <% track.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>
+
+<p><%= track.tape.name %></p>
+<%= track_form.hidden_field :tape_id %>
+<div class="field">
+  <%= track_form.label :name, "Track name" %><br />
+  <%= track_form.text_field :name %>
+</div>
+<div class="field">
+  <%= track_form.label :url, "Track url" %><br />
+  <%= track_form.text_field :url %>
+</div>

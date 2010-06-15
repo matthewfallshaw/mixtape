@@ -5,17 +5,31 @@
   <%= @tapester.name %>
 </p>
 
+<%= form_for(@tapester) do |tapester_form| -%>
 <ul>
-<% @tapes.each do |tape| -%>
-  <li><%= tape.name %>:<br /><%= tape.track_for(@tapester) ? "Recorded" : "<span class='embarrassing'>- nothing -</span>".html_safe %></li>
-<% end -%>
+<%   if tapester_at_home? -%>
+<%=    tapester_form.fields_for :tracks do |track_form| %>
+<%=      render :partial => 'tracks/form', :locals => {:track_form => track_form, :track => track_form.object} %>
+<%     end -%>
+<%   else -%>
+<%     @tracks.each do |track| -%>
+<%       tape = track.tape -%>
+  <li><%= tape.name %>:<br /><%= track.new_record? ? "<span class='embarrassing'>- nothing -</span>".html_safe : "Recorded" %></li>
+<%     end -%>
+<%   end -%>
 </ul>
+<%   if tapester_at_home? -%>
+<div class="actions">
+  <%= tapester_form.submit("Update my tracks - they're awesome!") %>
+</div>
+<%   end -%>
+<% end -%>
 
 <h2>Frequently Asked Questions:</h2>
 <dl>
 <% if tapester_signed_in? -%>
   <dt>You don't have any questions, <%= current_tapester.name %>, you're a old hand around these parts.</dt>
-<%   if @tapester != current_tapester -%>
+<%   if tapester_at_home? -%>
   <dd>(you could go back to <%= link_to "your page", tapester_path(current_tapester) %> and improve your offering, if you wanted to.)</dd>
 <%   end -%>
 <% elsif @tapester.encrypted_password.blank? -%>
