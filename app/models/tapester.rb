@@ -19,9 +19,6 @@ class Tapester < ActiveRecord::Base
   end
   has_many :tapes, :through => :tracks, :uniq => true
 
-  accepts_nested_attributes_for :tracks,
-    :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
-
   # I want to be able to say:
   #   tapester.tapes.each do |tape|
   #     if tape.track

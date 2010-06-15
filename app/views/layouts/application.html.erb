@@ -16,21 +16,23 @@
     <div class="header span-18">
       <h1>Mix tape night</h1>
     </div>
-    <div class="header tapester span-5 last"><br clear="all" />
+    <div class="header tapester span-5 last">
 <% if tapester_signed_in? -%>
-      <p>Welcome, <%= current_tapester.name %><br />
+      <p>Welcome, <%= link_to current_tapester.name, tapester_path(current_tapester) %><br />
       … or, <%= link_to "logout", destroy_tapester_session_path %> if that 'aint you.</p>
 <% elsif -%>
   <p><%= link_to "Login", tapester_session_path %>, or <%= link_to "claim your identity!", tapesters_path %></p>
 <% end -%>
     </div>
+  </div>
+  <div class="container">
     <div class="left-sidebar span-4">
       <ul>
         <li><%= link_to_unless_current "details", root_path %></li>
         <li><%= link_to_unless_current "tapes", tapes_path %></li>
         <li><%= link_to_unless_current "tapesters", tapesters_path %></li>
       </ul>
-    </div>
+    </div><!-- div.left-sidebar -->
     <div class="content span-19">
       <% unless notice.blank? %><p class="notice"><%= notice %></p><% end %>
       <% unless alert.blank? %><p class="alert"><%= alert %></p><% end %>

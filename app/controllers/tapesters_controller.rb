@@ -24,21 +24,5 @@ class TapestersController < ApplicationController
       format.xml  { render :xml => @tapester }
     end
   end
-
-  # PUT /tapesters/1
-  # PUT /tapesters/1.xml
-  def update
-    @tapester = Tapester.find(params[:id])
-
-    respond_to do |format|
-      if @tapester.update_attributes(params[:tapester])
-        format.html { redirect_to(@tapester, :notice => 'Tapester was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @track.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
   
 end

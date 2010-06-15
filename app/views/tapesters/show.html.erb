@@ -1,30 +1,20 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Name:</b>
   <%= @tapester.name %>
 </p>
 
-<%= form_for(@tapester) do |tapester_form| -%>
-<ul>
+<div class="span-19 last">
+<% @tracks.each do |track| -%>
+<%   tape = track.tape -%>
 <%   if tapester_at_home? -%>
-<%=    tapester_form.fields_for :tracks do |track_form| %>
-<%=      render :partial => 'tracks/form', :locals => {:track_form => track_form, :track => track_form.object} %>
-<%     end -%>
+<%= render :partial => 'tracks/form', :locals => { :track => track } %>
 <%   else -%>
-<%     @tracks.each do |track| -%>
-<%       tape = track.tape -%>
-  <li><%= tape.name %>:<br /><%= track.new_record? ? "<span class='embarrassing'>- nothing -</span>".html_safe : "Recorded" %></li>
-<%     end -%>
-<%   end -%>
-</ul>
-<%   if tapester_at_home? -%>
-<div class="actions">
-  <%= tapester_form.submit("Update my tracks - they're awesome!") %>
-</div>
+  <div class="span-10"><%= tape.name %>:</div><div class="span-9 last"><%= track.new_record? ? "<span class='embarrassing'>- nothing -</span>".html_safe : "Recorded" %></div>
 <%   end -%>
 <% end -%>
+</div>
 
+<div class="top-spacing span-19 last">
 <h2>Frequently Asked Questions:</h2>
 <dl>
 <% if tapester_signed_in? -%>
@@ -46,3 +36,4 @@
 </dl>
 
 <%= link_to 'Back', tapesters_path %>
+</div>
