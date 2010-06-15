@@ -17,6 +17,7 @@ class TapestersController < ApplicationController
   def show
     @tapester = Tapester.find(params[:id])
     @tapester.tracks.populate
+    @tapester.send(:generate_reset_password_token!) if @tapester.orphan?
     @tracks = @tapester.tracks
 
     respond_to do |format|

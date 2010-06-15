@@ -55,4 +55,22 @@ describe Tapester do
       end
     end
   end
+
+  describe "#orphan" do
+    it "should be true when no encrypted_password and no reset_password_token" do
+      tapester = Factory.build(:tapester, :password => nil,
+                               :encrypted_password => nil, :reset_password_token => nil)
+      tapester.orphan?.should == true
+    end
+    it "should be false when reset_password_token exists" do
+      tapester = Factory.build(:tapester, :password => nil,
+                               :encrypted_password => nil, :reset_password_token => "token")
+      tapester.orphan?.should == false
+    end
+    it "should be false when encrypted_password exists" do
+      tapester = Factory.build(:tapester, :password => nil,
+                               :encrypted_password => "encryptedpasswd", :reset_password_token => nil)
+      tapester.orphan?.should == false
+    end
+  end
 end

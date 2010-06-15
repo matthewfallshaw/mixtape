@@ -31,4 +31,7 @@ class Tapester < ActiveRecord::Base
 
   validates :name, :uniqueness => true
 
+  def orphan?
+    encrypted_password.blank? && reset_password_token.blank?
+  end
 end
