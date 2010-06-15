@@ -1,15 +1,13 @@
 class Tapester < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable, :lockable and :timeoutable, :recoverable
-  devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable
+  # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable, :recoverable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation
 
-  attr_protected :id, :password_salt
-
-  has_many :tracks
+  has_many :tracks, :dependent => :destroy
   has_many :tapes, :through => :tracks, :uniq => true
 
   # I want to be able to say:

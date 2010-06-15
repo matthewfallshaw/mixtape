@@ -11,4 +11,24 @@
 <% end -%>
 </ul>
 
+<h2>Frequently Asked Questions:</h2>
+<dl>
+<% if tapester_signed_in? -%>
+  <dt>You don't have any questions, <%= current_tapester.name %>, you're a old hand around these parts.</dt>
+<%   if @tapester != current_tapester -%>
+  <dd>(you could go back to <%= link_to "your page", tapester_path(current_tapester) %> and improve your offering, if you wanted to.)</dd>
+<%   end -%>
+<% elsif @tapester.encrypted_password.blank? -%>
+  <dt>I <strong>am</strong> <%= @tapester.name %>, and I want to resolve the embarrassment of this paltry offering! How do I do that?</dt>
+  <dd>
+  Click <%= link_to "here", edit_tapester_password_path(@tapester, :reset_password_token => @tapester.reset_password_token) %>, child, and claim your identity!
+  </dd>
+<% else -%>
+  <dt>I <strong>am</strong> <%= @tapester.name %>, and I want to sign in with the password I entered earlier! How do I do that?</dt>
+  <dd>
+  Click <%= link_to "here", tapester_session_path %>, rappling, and resume your work!
+  </dd>
+<% end -%>
+</dl>
+
 <%= link_to 'Back', tapesters_path %>

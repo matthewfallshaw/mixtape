@@ -4,9 +4,9 @@ class TapesterAuth < ActiveRecord::Migration
       t.database_authenticatable :null => false
       t.rememberable
       t.trackable
+      t.recoverable
 
       # t.confirmable
-      # t.recoverable
       # t.lockable :lock_strategy => :none, :unlock_strategy => :both
       # t.token_authenticatable
     end
@@ -29,6 +29,7 @@ class TapesterAuth < ActiveRecord::Migration
       t.remove "last_sign_in_at"
       t.remove "current_sign_in_ip"
       t.remove "last_sign_in_ip"
+      t.remove "reset_password_token"
     end
   end
 end

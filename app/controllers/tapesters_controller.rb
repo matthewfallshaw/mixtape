@@ -1,4 +1,6 @@
 class TapestersController < ApplicationController
+  before_filter :authenticate_tapester!, :except => [:index, :show]
+
   # GET /tapesters
   # GET /tapesters.xml
   def index
