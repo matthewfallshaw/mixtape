@@ -11,10 +11,19 @@ class Tapester < ActiveRecord::Base
   has_many :tracks, :dependent => :destroy do
     def populate
       Tape.all.each do |tape|
-        unless proxy_target.collect {|track| track.tape }.include?(tape)
+        unless proxy_owner.committed_tape_ids.include?(tape.id)
           proxy_target << Track.new(:tapester => proxy_owner, :tape => tape)
         end
       end
+      proxy_target
+
+      ### Annoying! This code works in the specs, and when there's a debugger
+      ### call in the middle, but not otherwise!
+      # Tape.all.each do |tape|
+      #   unless proxy_target.collect {|track| track.tape.id }.include?(tape.id)
+      #     proxy_target << Track.new(:tapester => proxy_owner, :tape => tape)
+      #   end
+      # end
     end
   end
   has_many :tapes, :through => :tracks, :uniq => true
@@ -33,5 +42,12 @@ class Tapester < ActiveRecord::Base
 
   def orphan?
     encrypted_password.blank? && reset_password_token.blank?
+  end
+
+  def committed_tape_ids
+    tracks.collect {|track| track.tape.id }
+  end
+  def uncommitted_tape_ids
+    Tape.all.collect {|tape| tape.id } - committed_tape_ids
   end
 end
