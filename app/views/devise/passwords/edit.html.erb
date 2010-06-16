@@ -1,0 +1,18 @@
+<% tapester = Tapester.find_by_reset_password_token(resource.reset_password_token) -%>
+<h2>Set your password, <%= tapester.name %></h2>
+<p>… erm, and don't forget it, or the email address I used, <%= tapester.email %>, b'cos I didn't make any way for you to get your password back, other than bothering me.</p>
+
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <p><%= f.label :password %><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.submit "Change my password" %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

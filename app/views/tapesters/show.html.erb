@@ -30,7 +30,7 @@
 <% else -%>
   <dt>I <strong>am</strong> <%= @tapester.name %>, and I want to sign in with the password I entered earlier! How do I do that?</dt>
   <dd>
-  Click <%= link_to "here", tapester_session_path %>, rappling, and resume your work!
+  Click <%= link_to "here", tapester_session_path(:email => @tapester.email) %>, rappling, and resume your work!
   </dd>
 <% end -%>
 </dl>
