@@ -10,7 +10,12 @@
 
 <p>
   <b>Commitment:</b>
-  <%= @tape.tapesters.count == 0 ? "<span class='embarrassing'>- none -</span>".html_safe : @tape.tapesters.collect {|tapester| tapester.name }.to_sentence %>
+  <%= committed_tapesters %>
+</p>
+
+<p>
+  <b>Still to commit:</b>
+  <%= uncommitted_tapesters %>
 </p>
 
 
