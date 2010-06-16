@@ -1,2 +1,3 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(document).ready(function() {
+    $("#header").animate({ backgroundPosition: "(0 -9999999px)" }, 999999999, 'linear');
+});
