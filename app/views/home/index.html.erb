@@ -8,10 +8,11 @@
 </ul>
 
 <h2>Responsibilities</h2>
-<p>Each <%= link_to "tapester", tapesters_path %> is responsible for one track on each <%= link_to "tape", tapes_path %>. The tapes are:</p>
-
-<%= render :partial => 'tapes/tapes', :locals => { :tapes => @tapes } %>
 
 <p>Manage your submissions from your <%= link_to "tapester", tapesters_path %> page.</p>
+
+<p>Each <%= link_to "tapester", tapesters_path %> is responsible for one track on each tape. The tapes are:</p>
+
+<%= render :partial => 'tapes/tapes', :locals => { :tapes => @tapes } %>
 
 <p>Eddie Murphy and Rick James cant make it, but they can be found <a href="http://www.youtube.com/watch?v=m5LX16zia2k" target="_blank">here</a>.  Try to look away.</p>
