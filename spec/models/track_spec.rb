@@ -28,5 +28,19 @@ describe Track do
       track = Factory.build(:track, :url => "http://www.pornotube.com/watch?v=FtbCx-i2Whg")
       track.should_not be_valid
     end
+
+    it "should refuse duplicate base_urls" do
+      Factory.create(:track, :url => "youtube.com/watch?v=sISJkCJ7Jto&feature=related#t=12s")
+      track = Factory.build(:track, :url => "youtube.com/watch?v=sISJkCJ7Jto#t=11s")
+      track.valid?
+      track.errors[:url].join.should match(/OMG/)
+    end
+  end
+  
+  describe "#base_url" do
+    it "should be #url without any fluff on the end" do
+      track = Factory.build(:track, :url => "www.youtube.com/watch?v=FtbCx-i2Whg&feature=related#t=12s")
+      track.base_url.should == "http://www.youtube.com/watch?v=FtbCx-i2Whg"
+    end
   end
 end
