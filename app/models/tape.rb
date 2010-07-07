@@ -8,4 +8,12 @@ class Tape < ActiveRecord::Base
     tracks.where(:tapester_id => tapester.id).all.only
   end
 
+  def uncommitted_tapesters
+    (Tapester.all - tapesters).sort
+  end
+
+  def <=>(other)
+    self.name <=> other.name
+  end
+
 end

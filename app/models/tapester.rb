@@ -50,4 +50,9 @@ class Tapester < ActiveRecord::Base
   def uncommitted_tape_ids
     Tape.all.collect {|tape| tape.id } - committed_tape_ids
   end
+
+  def <=>(other)
+    self.name <=> other.name
+  end
+  
 end

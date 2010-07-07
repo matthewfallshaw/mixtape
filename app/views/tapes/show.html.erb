@@ -18,5 +18,12 @@
   <%= uncommitted_tapesters %>
 </p>
 
+<% if @track %>
+<div class="span-19 last">
+  <p>Go on, commit:</p>
+<%= render :partial => 'tracks/form', :locals => { :track => @track } %>
+</div>
+<% end %>
+
 
 <%= link_to 'Back', tapes_path %>

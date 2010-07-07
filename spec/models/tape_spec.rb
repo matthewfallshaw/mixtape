@@ -17,4 +17,9 @@ describe Tape do
       @tape.track_for(@tapester).should == track
     end
   end
+
+  describe "#uncommitted_tapesters" do
+    it "should include tapesters with a track on this tape"
+    it "should not include tapesters without a track on this tape"
+  end
 end
