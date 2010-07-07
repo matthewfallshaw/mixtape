@@ -32,7 +32,7 @@ class Track < ActiveRecord::Base
     other_track_base_urls = Track.all.select {|t| t.id != id }.collect(&:base_url)
     if other_track_base_urls.include?(base_url)
       errors.add :url, <<ERROR
-OMG! - You're not going to believe what just happened!
+: OMG! - You're not going to believe what just happened!
 Someone else has already chosen that very exact same track!
 You should choose another, and next time… perhaps you might try to get in a little earlier, eh?"
 ERROR

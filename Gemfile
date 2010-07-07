@@ -37,6 +37,8 @@ end
 
 group :test do
   gem "rspec-rails", ">= 2.0.0.beta.8"
+  gem 'autotest'
+  gem 'autotest-rails'
   gem 'factory_girl'
   gem 'awesome_print', :require => 'ap'
 end
