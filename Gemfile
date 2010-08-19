@@ -22,7 +22,7 @@ gem 'mysql'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
-gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '4db3ac820b0ad3d1606c'
+gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '7dbd2eac2a717'
 
 # Bundle gems for certain environments:
 # gem 'rspec', :group => :test
