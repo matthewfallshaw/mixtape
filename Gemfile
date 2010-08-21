@@ -23,6 +23,7 @@ gem 'mysql'
 # gem 'aws-s3', :require => 'aws/s3'
 
 gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '7dbd2eac2a717'
+gem "gdata"
 
 # Bundle gems for certain environments:
 # gem 'rspec', :group => :test
@@ -33,6 +34,8 @@ gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '7dbd
 group :development do
   gem 'ruby-debug'
   gem 'awesome_print', :require => 'ap'
+  gem 'interactive_editor'
+  gem 'xml-simple', :require => 'xmlsimple'
 end
 
 group :test do

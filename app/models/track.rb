@@ -26,6 +26,10 @@ class Track < ActiveRecord::Base
     url.sub(/#.*$/,'') if url
   end
 
+  def youtube_id
+    url[/v=([^&]+)/,1]
+  end
+
   private
 
   def must_have_unique_base_url
