@@ -1,9 +1,10 @@
 .embarrassing { color: pink; }
-div#header { padding: 2em 0 1em; height: 200px; background-image: url('/images/80s.jpg') }
+div#header { padding: 2em 0 1em; height: 200px; background-image: url('/images/black tie.jpg') }
 .top-spacing { padding-top: 2em; }
 div#main { padding-top: 1em; }
-div.header h1 span, div.header p span {
-  background-color: pink;
+div.header h1 span, div.header h2 span, div.header p span {
+  background-color: white;
   padding: 0.3em;
 }
+div.header h2 span { padding-top: 0; }
 div#current-tapester { text-align: right; }

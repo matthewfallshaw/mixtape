@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(:version => 20100821001837) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                                              :null => false
-    t.string   "encrypted_password",   :limit => 128,                :null => false
-    t.string   "password_salt",                                      :null => false
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                       :default => "", :null => false
     t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                       :default => 0

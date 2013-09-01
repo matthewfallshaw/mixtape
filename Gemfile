@@ -5,8 +5,6 @@ gem 'rails', :git => 'git://github.com/rails/rails.git', :ref => '5c9f27abaabba0
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql'
-
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -23,7 +21,7 @@ gem 'mysql'
 # gem 'aws-s3', :require => 'aws/s3'
 
 gem "devise", :git => "git://github.com/plataformatec/devise.git", :ref => '7dbd2eac2a717'
-gem "gdata"
+# gem "gdata"
 
 # Bundle gems for certain environments:
 # gem 'rspec', :group => :test
@@ -31,10 +29,35 @@ gem "gdata"
 #   gem 'webrat'
 # end
 
-group :development do
-  gem 'ruby-debug'
+
+# for deployment on Heroku
+# gem "heroku"
+group :development, :test do
+  gem 'sqlite3'
+  gem 'taps'
+  gem 'heroku'
+end
+group :production do
+  gem 'pg'
+  gem 'thin'
+end
+
+group :development, :test do
+#   gem "rspec-rails", ">= 2.8.1"
   gem 'awesome_print', :require => 'ap'
   gem 'interactive_editor'
+end
+
+# group :test do
+#   gem "factory_girl", "~> 4.2.0"
+# end
+
+
+
+group :development do
+  gem 'ruby-debug'
+#   gem 'awesome_print', :require => 'ap'
+#   gem 'interactive_editor'
   gem 'xml-simple', :require => 'xmlsimple'
 end
 
@@ -43,5 +66,5 @@ group :test do
   gem 'autotest'
   gem 'autotest-rails'
   gem 'factory_girl'
-  gem 'awesome_print', :require => 'ap'
+#   gem 'awesome_print', :require => 'ap'
 end
